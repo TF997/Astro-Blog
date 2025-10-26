@@ -1,0 +1,20 @@
+{
+  "nodes": [
+    {
+      "id": "documentation-in-the-age-of-AI",
+      "type": "post",
+      "title": "Documentation in the age of AI",
+      "slug": "documentation-in-the-age-of-AI",
+      "date": "2025-10-26T00:00:00.000Z",
+      "connections": 0
+    }
+  ],
+  "connections": [],
+  "metadata": {
+    "generated": "2025-10-26T12:57:07.050Z",
+    "totalPosts": 1,
+    "totalConnections": 0,
+    "maxNodesApplied": false,
+    "originalNodeCount": 1
+  }
+}
