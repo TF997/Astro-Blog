@@ -12,7 +12,7 @@
     }
   },
   "siteInfo": {
-    "site": "https://test.com",
+    "site": "https://tf997.github.io/Astro-Blog/",
     "title": "Bens Blog",
     "description": "My Ramblings",
     "author": "Ben",
@@ -45,6 +45,10 @@
       {
         "title": "Projects",
         "url": "/projects"
+      },
+      {
+        "title": "Docs",
+        "url": "/docs"
       },
       {
         "title": "About",

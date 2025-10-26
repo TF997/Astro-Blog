@@ -2,7 +2,7 @@
 
 // Aspect ratio options for post cards
 export type AspectRatio = 
-  | "16:9" 
+  | "16:9"
   | "4:3"
   | "3:2"
   | "og"
@@ -17,7 +17,7 @@ export interface SiteConfig {
   description: string;
   author: string;
   language: string;
-  
+
   // Global Settings
   theme: "minimal" | "oxygen" | "atom" | "ayu" | "catppuccin" | "charcoal" | "dracula" | "everforest" | "flexoki" | "gruvbox" | "macos" | "nord" | "obsidian" | "rose-pine" | "sky" | "solarized" | "things" | "custom";
   customThemeFile?: string; // Filename in src/themes/custom/ (e.g., "my-cool-theme" for my-cool-theme.ts)
@@ -53,7 +53,7 @@ export interface SiteConfig {
   deployment: {
     platform: "netlify" | "vercel" | "github-pages";
   };
-  
+
   // Command Palette
   commandPalette: {
     enabled: boolean;
@@ -77,7 +77,7 @@ export interface SiteConfig {
       changeTheme: boolean;
     };
   };
-  
+
   // Profile Picture
   profilePicture: {
     enabled: boolean;
@@ -88,7 +88,7 @@ export interface SiteConfig {
     placement: "footer" | "header";
     style: "circle" | "square" | "none";
   };
-  
+
   // Navigation
   navigation: {
     showNavigation: boolean;
@@ -97,7 +97,7 @@ export interface SiteConfig {
     pages: Array<{ title: string; url: string }>;
     social: Array<{ title: string; url: string; icon: string }>;
   };
-  
+
   // Home Options
   homeOptions: {
     featuredPost: {
@@ -121,7 +121,7 @@ export interface SiteConfig {
       placement: "above" | "below" | "none";
     };
   };
-  
+
   // Post Options
   postOptions: {
     postsPerPage: number;
@@ -159,7 +159,7 @@ export interface SiteConfig {
       loading: string;
     };
   };
-  
+
   // Optional Content Types
   optionalContentTypes: {
     projects: boolean;
@@ -170,18 +170,18 @@ export interface SiteConfig {
 // ═══════════════════════════════════════════════════════════════════════════════
 // ASTRO MODULAR CONFIGURATION
 // ═══════════════════════════════════════════════════════════════════════════════
-// 
+//
 // ⚠️ IMPORTANT: Comment markers like // [CONFIG:KEY] are used by the Astro Modular
 // Settings Obsidian plugin. Do not remove these markers or the plugin will not be
 // able to update your configuration automatically.
-// 
+//
 // Most settings have helpful comments explaining what they do.
-// 
+//
 // ═══════════════════════════════════════════════════════════════════════════════
 export const siteConfig: SiteConfig = {
   // Site Information
   // [CONFIG:SITE_URL]
-  site: "https://test.com",
+  site: "https://tf997.github.io/Astro-Blog/",
   // [CONFIG:SITE_TITLE]
   title: "Bens Blog",
   // [CONFIG:SITE_DESCRIPTION]
@@ -205,7 +205,7 @@ export const siteConfig: SiteConfig = {
       // [CONFIG:FONT_BODY]
       body: "Inter",      // Body text font family
       // [CONFIG:FONT_HEADING]
-      heading: "Inter",   // Heading font family  
+      heading: "Inter",   // Heading font family
       // [CONFIG:FONT_MONO]
       mono: "JetBrains Mono", // Monospace font family
     },
@@ -286,7 +286,7 @@ export const siteConfig: SiteConfig = {
   // Profile Picture
   profilePicture: {
     // [CONFIG:PROFILE_PICTURE_ENABLED]
-    enabled: false, 
+    enabled: false,
     // [CONFIG:PROFILE_PICTURE_IMAGE]
     image: "/profile.jpg", // Path to your profile image (place in public/ directory)
     // [CONFIG:PROFILE_PICTURE_ALT]
@@ -313,6 +313,7 @@ export const siteConfig: SiteConfig = {
     pages: [
       { title: "Posts", url: "/posts" },
       { title: "Projects", url: "/projects" },
+      { title: "Docs", url: "/docs" },
       { title: "About", url: "/about" },
       { title: "GitHub", url: "https://github.com/TF997" },
     ],
@@ -454,7 +455,7 @@ export function getTheme(): "minimal" | "oxygen" | "atom" | "ayu" | "catppuccin"
 
 export function getPostCardAspectRatio(): string {
   const { postCardAspectRatio, customPostCardAspectRatio } = siteConfig.postOptions;
-  
+
   switch (postCardAspectRatio) {
     case "16:9":
       return "16 / 9";
@@ -514,21 +515,21 @@ export function getFontFamily(fontName: string): string {
     'IBM Plex Mono': "'IBM Plex Mono', 'Monaco', 'Consolas', 'Courier New', monospace",
     'Cascadia Code': "'Cascadia Code', 'Monaco', 'Consolas', 'Courier New', monospace",
   };
-  
+
   return fontMap[fontName] || `'${fontName}', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
 }
 
 export function getGoogleFontsUrl(headingFont: string, bodyFont: string): string {
   // Google Fonts that are commonly used and available
   const googleFonts = [
-    'Inter', 'Roboto', 'Open Sans', 'Lato', 'Poppins', 'Source Sans Pro', 
-    'Nunito', 'Montserrat', 'Playfair Display', 'Merriweather', 'Lora', 
-    'Crimson Text', 'PT Serif', 'Libre Baskerville', 'Fira Code', 
+    'Inter', 'Roboto', 'Open Sans', 'Lato', 'Poppins', 'Source Sans Pro',
+    'Nunito', 'Montserrat', 'Playfair Display', 'Merriweather', 'Lora',
+    'Crimson Text', 'PT Serif', 'Libre Baskerville', 'Fira Code',
     'JetBrains Mono', 'Source Code Pro', 'IBM Plex Mono', 'Cascadia Code'
   ];
-  
+
   const fonts = new Set<string>();
-  
+
   // Add fonts if they're Google Fonts
   if (googleFonts.includes(headingFont)) {
     fonts.add(headingFont);
@@ -536,19 +537,19 @@ export function getGoogleFontsUrl(headingFont: string, bodyFont: string): string
   if (googleFonts.includes(bodyFont)) {
     fonts.add(bodyFont);
   }
-  
+
   // If no Google Fonts are needed, return empty string
   if (fonts.size === 0) {
     return '';
   }
-  
+
   // Generate Google Fonts URL
   const fontList = Array.from(fonts).map(font => {
     // Add common weights for each font
     const weights = font.includes('Mono') ? '300;400;500;600;700' : '300;400;500;600;700';
     return `${font.replace(/\s+/g, '+')}:wght@${weights}`;
   }).join('&family=');
-  
+
   return `https://fonts.googleapis.com/css2?family=${fontList}&display=swap`;
 }
 
@@ -568,12 +569,12 @@ export function getThemeDisplayName(themeName: string): string {
     'rose-pine': 'Rosé Pine',
     'macos': 'macOS'
   };
-  
+
   // Return special case if it exists
   if (specialCases[themeName]) {
     return specialCases[themeName];
   }
-  
+
   // General formatting: capitalize first letter and replace hyphens with spaces
   return themeName
     .split('-')
@@ -701,12 +702,12 @@ function validateSiteConfig(config: SiteConfig): { isValid: boolean; errors: str
   if (!['above', 'below', 'none'].includes(config.homeOptions.blurb.placement)) {
     errors.push(`Home blurb placement must be "above", "below", or "none". Current value "${config.homeOptions.blurb.placement}" is invalid.`);
   }
-  
+
   // Featured post validation
   if (!['latest', 'featured'].includes(config.homeOptions.featuredPost.type)) {
     errors.push(`Featured post type must be either "latest" or "featured". Current value "${config.homeOptions.featuredPost.type}" is invalid.`);
   }
-  
+
   // Only validate slug when type is "featured" - slug is optional when type is "latest"
   if (config.homeOptions.featuredPost.type === 'featured' && (!config.homeOptions.featuredPost.slug || config.homeOptions.featuredPost.slug.trim() === '')) {
     errors.push('Featured post slug is required when type is "featured". Set homeOptions.featuredPost.slug to the post slug (the part after /posts/ in the URL).');

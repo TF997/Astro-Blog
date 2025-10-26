@@ -10,7 +10,7 @@ imageOG: false
 hideCoverImage: false
 hideTOC: false
 targetKeyword: MCPs, unblocked, AI, artificial intelligence, documentation
-draft: true
+draft: false
 ---
 ## A change in convention
 The world we live in now has rapidly changing conventions when it comes to software development. So how do we make sure we keep documentation for AI and humans simple and not cause bloated folders full of random markdown files.
