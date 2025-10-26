@@ -144,7 +144,7 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ['astro:content']
     },
-    exclude: ['**/_redirects']
+    exclude: ['**/_redirects', '**/_headers']
   },
   build: {
     assets: '_assets'
