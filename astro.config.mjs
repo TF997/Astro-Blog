@@ -129,22 +129,20 @@ export default defineConfig({
       hmr: false,
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate'
+      },
+      watch: {
+        usePolling: process.platform === 'win32', // Use polling on Windows for better file watching
+        interval: 1000
       }
     },
     define: {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.ASTRO_CONTENT_COLLECTION_CACHE': 'false'
     },
-    server: {
-      watch: {
-        usePolling: process.platform === 'win32', // Use polling on Windows for better file watching
-        interval: 1000
-      }
-    },
     optimizeDeps: {
       exclude: ['astro:content']
     },
-    exclude: ['**/_redirects', '**/_headers']
+    assetsInclude: ['**/*.md', '**/*.txt']
   },
   build: {
     assets: '_assets'

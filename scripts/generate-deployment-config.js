@@ -458,22 +458,10 @@ async function writeGitHubPagesConfig(redirects) {
     await fs.writeFile(redirectsPath, config, 'utf-8');
     log.info(`📝 Updated public/_redirects with ${redirects.length} redirects`);
     
-    // Write headers file (for paid GitHub Pages plans)
-    const headersContent = `# GitHub Pages Custom Headers
-# Note: Custom headers require GitHub Pages on a paid plan or GitHub Enterprise
-# For free GitHub Pages, these headers won't be applied
-
-# PDF files - allow iframe embedding
-/*.pdf
-  X-Frame-Options: SAMEORIGIN
-  Cache-Control: public, max-age=3600
-
-# All pages - Content Security Policy for Twitter widgets
-/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://giscus.app https://platform.twitter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://giscus.app; frame-src 'self' https://www.youtube.com https://giscus.app https://platform.twitter.com; object-src 'none'; base-uri 'self';
-`;
-    await fs.writeFile(headersPath, headersContent, 'utf-8');
-    log.info(`📝 Created public/_headers for GitHub Pages (requires paid plan)`);
+    // Note: _headers file is not created for GitHub Pages due to Vite parsing issues
+    // GitHub Pages on free plans doesn't support _headers anyway
+    // If you need custom headers, use GitHub Actions workflow to add them
+    log.info(`📝 Skipped public/_headers (not supported on free GitHub Pages)`);
   } catch (error) {
     log.error(`❌ Error updating GitHub Pages config:`, error.message);
   }
