@@ -18,6 +18,27 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { siteConfig } from './src/config.ts';
 import swup from '@swup/astro';
 
+// Custom Vite plugin to ignore public deployment files
+function ignorePublicFiles() {
+  return {
+    name: 'ignore-public-files',
+    resolveId(id) {
+      // Ignore _redirects and _headers files in public directory
+      if (id.includes('/_redirects') || id.includes('/_headers')) {
+        return { id, external: true };
+      }
+      return null;
+    },
+    load(id) {
+      // Return empty module for ignored files
+      if (id.includes('/_redirects') || id.includes('/_headers')) {
+        return '';
+      }
+      return null;
+    }
+  };
+}
+
 // Deployment platform configuration
 const DEPLOYMENT_PLATFORM = process.env.DEPLOYMENT_PLATFORM || 'netlify';
 
@@ -111,6 +132,7 @@ export default defineConfig({
     }
   },
   vite: {
+    plugins: [ignorePublicFiles()],
     resolve: {
       alias: {
         '@': new URL('./src', import.meta.url).pathname,
