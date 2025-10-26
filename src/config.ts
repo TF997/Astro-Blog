@@ -181,13 +181,13 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   // Site Information
   // [CONFIG:SITE_URL]
-  site: "https://astro-modular.netlify.app",
+  site: "https://test.com",
   // [CONFIG:SITE_TITLE]
-  title: "Astro Modular",
+  title: "Bens Blog",
   // [CONFIG:SITE_DESCRIPTION]
-  description: "A flexible blog theme designed for Obsidian users.",
+  description: "My Ramblings",
   // [CONFIG:SITE_AUTHOR]
-  author: "David V. Kimball",
+  author: "Ben",
   // [CONFIG:SITE_LANGUAGE]
   language: "en",
 
@@ -242,7 +242,7 @@ export const siteConfig: SiteConfig = {
   },
   deployment: {
     // [CONFIG:DEPLOYMENT_PLATFORM]
-    platform: "netlify", // "netlify" | "vercel" | "github-pages" - sets redirect configuration for the chosen platform
+    platform: "github-pages", // "netlify" | "vercel" | "github-pages" - sets redirect configuration for the chosen platform
   },
 
   // Command Palette
@@ -313,20 +313,14 @@ export const siteConfig: SiteConfig = {
     pages: [
       { title: "Posts", url: "/posts" },
       { title: "Projects", url: "/projects" },
-      { title: "Docs", url: "/docs" },
       { title: "About", url: "/about" },
-      { title: "GitHub", url: "https://github.com/davidvkimball/astro-modular" },
+      { title: "GitHub", url: "https://github.com/TF997" },
     ],
     // [CONFIG:NAVIGATION_SOCIAL]
     social: [
       {
-        title: "X",
-        url: "https://x.com/davidvkimball",
-        icon: "x-twitter",
-      },
-      {
         title: "GitHub",
-        url: "https://github.com/davidvkimball",
+        url: "https://github.com/TF997",
         icon: "github",
       },
     ],

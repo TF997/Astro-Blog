@@ -152,12 +152,6 @@
   force = true
 
 [[redirects]]
-  from = "/about-us"
-  to = "/about"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/contact-me"
   to = "/contact"
   status = 301

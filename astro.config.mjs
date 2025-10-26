@@ -31,7 +31,6 @@ export default defineConfig({
   },
   redirects: {
   '/about-me': '/about',
-  '/about-us': '/about',
   '/contact-me': '/contact',
   '/contact-us': '/contact',
   '/privacy': '/privacy-policy'

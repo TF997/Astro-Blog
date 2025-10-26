@@ -18,5 +18,6 @@
   "homepage",
   "astro-composer",
   "obsidian-prozen",
-  "seo"
+  "seo",
+  "astro-modular-settings"
 ]
