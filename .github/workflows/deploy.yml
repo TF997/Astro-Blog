@@ -40,6 +40,9 @@ jobs:
         env:
           DEPLOYMENT_PLATFORM: github-pages
       
+      - name: Create .nojekyll file
+        run: touch dist/.nojekyll
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
