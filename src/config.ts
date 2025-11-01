@@ -181,7 +181,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   // Site Information
   // [CONFIG:SITE_URL]
-  site: "https://tf997.github.io/",
+  site: "https://tf997.github.io/Astro-Blog/",
   // [CONFIG:SITE_TITLE]
   title: "Bens Blog",
   // [CONFIG:SITE_DESCRIPTION]
