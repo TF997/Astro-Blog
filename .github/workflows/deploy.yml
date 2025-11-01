@@ -23,13 +23,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
-          cache: 'pnpm'  # Or 'npm' if you use npm
+          cache: 'npm'  # Or 'npm' if you use npm
 
       - name: Install dependencies
-        run: pnpm install   # Change to npm ci if you use npm instead of pnpm
+        run: npm install   # Change to npm ci if you use npm instead of pnpm
 
       - name: Build Astro
-        run: pnpm run build  # Change to npm run build if needed
+        run: npm run build  # Change to npm run build if needed
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
