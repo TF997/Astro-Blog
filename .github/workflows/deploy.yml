@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy Astro to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main]  # Change to your default branch if different
   workflow_dispatch:
 
 permissions:
@@ -10,55 +10,42 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
         with:
-          version: 8
-      
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '20'
-          cache: 'pnpm'
-      
+          node-version: '18'
+          cache: 'pnpm'  # Or 'npm' if you use npm
+
       - name: Install dependencies
-        run: pnpm install
-      
-      - name: Build
-        run: pnpm run build
-        env:
-          DEPLOYMENT_PLATFORM: github-pages
-      
-      - name: Create .nojekyll file
-        run: touch dist/.nojekyll
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
+        run: pnpm install   # Change to npm ci if you use npm instead of pnpm
+
+      - name: Build Astro
+        run: pnpm run build  # Change to npm run build if needed
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
-          path: dist
+          path: ./dist
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-
+        uses: actions/deploy-pages@v1
